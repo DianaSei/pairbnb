@@ -30,6 +30,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Clearance user authentication gem
 gem 'clearance'
 
+# Figaro protecting secret keys gem
+gem "figaro"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
