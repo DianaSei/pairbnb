@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		if user.save 
 			redirect_to '/'
 		else 
-			# by@ebug
+			# by@rails ebug
 			redirect_to '/sign_up'
 		end
 	end
