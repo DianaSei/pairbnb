@@ -1,7 +1,7 @@
 <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="sign-up text-center">
+  <h2 class="text-center h3 mb-3 font-weight-light"><%= t(".title") %></h2>
 
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>

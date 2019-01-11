@@ -1,0 +1,11 @@
+<h1 class="text-center h3 mb-3 font-weight-light"> Here are all your options </h1>
+
+<ul>
+	<% @listings.each do |listing| %>
+		 <li> <p> Published by: <%= listing.user.full_name %> </p>
+		  <%= listing.name_of_the_building %>
+		 <p> Price: <%= listing.price %> </p> </li>
+		 <%= link_to "More details", listing_path(listing.id) %>
+
+ 	<%end %>
+ </ul>

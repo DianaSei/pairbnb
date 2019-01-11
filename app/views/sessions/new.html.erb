@@ -1,8 +1,10 @@
 <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 
-<div id="clearance" class="sign-in">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="sign-in text-center container col-md-10">
+  <h2 class= "text-center h3 mb-3 font-weight-light" ><%= t(".title") %></h2>
 
   <%= render partial: '/sessions/form' %>
 
 </div>
+
+

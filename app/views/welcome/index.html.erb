@@ -1,2 +1,14 @@
-<h1> Welcome to a simple clon of Airbnb! </h1>
-<p> What do you want to book today, <%=current_user.full_name%>? </p>
+<h1 class="text-center h3 mb-3 font-weight-light"> Welcome to a simple clon of Airbnb! </h1>
+<p class="text-center h6 mb-3 font-weight-light"> What do you want to book today, <%=current_user.full_name%>? </p>
+
+<nav class="nav">
+	<%= link_to "Make a listing", new_listing_path, :class => "nav-link active"%> <br/>
+	<%= link_to "All listings", listings_path, :class => "nav-link active"%>
+</nav>
+
+<!-- <nav class="nav">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav> -->
