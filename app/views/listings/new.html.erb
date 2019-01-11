@@ -1,0 +1,14 @@
+
+
+
+<h2> Become a host today! </h2>
+
+	
+<%= form_with url: listings_path, scope: :listing, method: :post, local: true do |form| %>
+    <%= render partial: '/listings/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+
+<% end %>

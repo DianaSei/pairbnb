@@ -30,6 +30,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Clearance user authentication gem
 gem 'clearance'
 
+# Bootstrap gem for clearance 
+gem 'bootstrap-sass'
+
 # Figaro protecting secret keys gem
 gem "figaro"
 

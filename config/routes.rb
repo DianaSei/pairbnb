@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
+  resources :listings
 
   resources :users do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
+    # resources :listings
   end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
