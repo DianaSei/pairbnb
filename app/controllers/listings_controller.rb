@@ -1,9 +1,13 @@
 class ListingsController < ApplicationController
 	def new
+		@tags = Tag.all
 	end
 	def create
 		listing = Listing.new(listing_params) 
 		listing.user_id = current_user.id
+		# tags = Tag.all
+		# tags.each do |tag|
+
 		if listing.save 
 			redirect_to listings_path
 		else 
@@ -12,7 +16,9 @@ class ListingsController < ApplicationController
 	end
 
 	def index
-		@listings = Listing.all.order(updated_at: :desc)
+		@listings = Listing.all.order(updated_at: :desc).page params[:page]
+		# @listings = Listing.all.order(:name_of_the_building).page params[:page]
+		
 
 	end
 
@@ -38,6 +44,25 @@ class ListingsController < ApplicationController
 			redirect_to listing_path(list)
 		end
 	end
+
+	def verify
+		listing = Listing.find(params[:id])
+
+		if listing.verify == nil
+			listing.update(verify: true)
+		end
+			redirect_to listing_path
+	end
+
+	def unverify
+		listing = Listing.find(params[:id])
+		if listing.verify == nil
+			listing.update(verify: false)
+		end
+			redirect_to listing_path	
+	end
+
+
 
 private
 	def listing_params

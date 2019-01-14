@@ -1,12 +1,42 @@
-<%= @listing.name_of_the_building %><br/>
-<%= @listing.address%><br/>
-<%= @listing.details %><br/>
-<%= @listing.price %><br/>
 
+<div class="card mb-3">
+	<div class="container text-center mx-auto">
+  <img class="card-img-top w-75 p-3" src="https://r6jhc3p6j693p1srcsy4fmcd-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/snow_bed_view1-1024x576.jpg" >
+</div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @listing.name_of_the_building %><br/></h5>
+    <p class="card-text"><%= @listing.details %> </p>
+    <p class="card-text"><%= @listing.address%></p>
+    <p class="card-text"> Price: <%= @listing.price %></p>
+    <p class="card-text"><small class="text-muted">Last updated <%=@listing.updated_at%></small></p>
+  </div>
+</div>
 
 <% if current_user.id == @listing.user_id %>
-	<%= link_to "Edit", edit_listing_path(@listing.id) %>
-	<%= link_to "Delete", listing_path(@listing.id), method: :delete, data: { confirm: 'Are you sure you want to delete this listing?' } %>
+	<%= link_to "Edit", edit_listing_path(@listing.id), :class => "btn btn-primary" %>
+	<%= link_to "Delete", listing_path(@listing.id), method: :delete, data: { confirm: 'Are you sure you want to delete this listing?' }, :class => "btn btn-danger"  %>
 <% else %>
-	<%= link_to "Book" %>
+	<%= link_to "Book", :class => "btn btn-success"  %>
 <%end%>
+
+<% byebug %>
+<% if (current_user.moderator? && @listing.verify == nil) || 
+	(current_user.admin? && @listing.verify == nil) %>
+
+	<%= form_with url: verify_path(@listing.id), scope: :listing, local: true do |form| %> 
+		<button class = "btn btn-outline-success"> Accept </button>
+		<%end%>
+
+	<%= form_with url: unverify_path(@listing.id), scope: :listing, local: true do |form| %> 
+		<button class = "btn btn-outline-danger"> Decline </button>
+		<%end%>
+
+
+	<%elsif @listing.verify? %>
+	 <button class= "btn btn-outline-success" >Verified</button>
+	 <% elsif @listing.verify? == false %>
+	 	<button class= "btn btn-outline-danger" >Declined</button>
+	 	<%else @listing.verify == nil %>
+	 <button class= "btn btn-outline-dark" >Verifing ... </button>
+	 		
+	<% end %>

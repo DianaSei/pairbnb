@@ -36,6 +36,12 @@ gem 'bootstrap-sass'
 # Figaro protecting secret keys gem
 gem "figaro"
 
+#faker gem
+gem 'faker'
+
+# Pagination
+gem 'kaminari'
+
 # OmniAuth Google OAuth2 gem
 gem "omniauth"
 gem "omniauth-google-oauth2"
