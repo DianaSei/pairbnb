@@ -1,11 +1,75 @@
-<h1 class="text-center h3 mb-3 font-weight-light"> Here are all your options </h1>
+<h1 class="text-center h3 mb-3 font-weight-light" style="margin-top: 5vh"> Here are all your options </h1>
 
-<ul>
-	<% @listings.each do |listing| %>
-		 <li> <p> Published by: <%= listing.user.full_name %> </p>
-		  <%= listing.name_of_the_building %>
-		 <p> Price: <%= listing.price %> </p> </li>
-		 <%= link_to "More details", listing_path(listing.id) %>
 
- 	<%end %>
- </ul>
+<div class="input-group mb-3 justify-content-center">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <spin class= "input-group-text"> Non-smoking </spin>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <spin class= "input-group-text"> No-pets </spin>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <spin class= "input-group-text"> Late-coder </spin>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <spin class= "input-group-text"> Whole apartment </spin>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <spin class= "input-group-text"> One room </spin>
+
+  <button class="btn btn-outline-success">Search</button>
+</div> <br/>
+
+
+<% @listings.each do |listing| %>
+
+<div class="container justify-content-center">
+  <div class="card text-center w-50 p-3 justify-content-center mx-auto ">
+    <div class="card-header">
+      <%= listing.created_at %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= listing.name_of_the_building %></h5>
+      <p class="card-text"><%= listing.details %> </p>
+      <div class="btn btn-primary"> <%= link_to "More details", listing_path(listing.id), :class => "text-white" %> </div>
+    </div>
+    <div class="card-footer text-muted">
+      Published by: <%=listing.user.full_name %>
+    </div>
+  </div>
+</div> <br/>
+<%end %>
+
+
+<!-- <div class="d-flex justify-content-lg-around">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://r6jhc3p6j693p1srcsy4fmcd-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/snow_bed_view1-1024x576.jpg">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <p class="card-text">  </p>
+      
+    </div>
+  </div>
+</div> -->
+
+
+
+
+ 
+     <%= paginate @listings %>

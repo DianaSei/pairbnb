@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
-  resources :listings
+  resources :listings do
+    resources :bookings
+  end
 
   resources :users do
     resource :password,
@@ -11,6 +13,9 @@ Rails.application.routes.draw do
     # resources :listings
   end
 
+
+  post "/listings/:id/verify" => "listings#verify", as: "verify"
+  post "/listings/:id/unverify" => "listings#unverify", as: "unverify"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"

@@ -1,11 +1,9 @@
-hello 
+
 
 <%= form_with url: listings_path, scope: :listing, method: :post, local: true do |form| %>
 <%#= form_with model: @listing, scope: :listing, local: true do |form| %>
     <%= render partial: '/listings/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+   
 
 <% end %>

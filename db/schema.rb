@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_085400) do
+ActiveRecord::Schema.define(version: 2019_01_15_015006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,26 @@ ActiveRecord::Schema.define(version: 2019_01_10_085400) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.date "start_from"
+    t.date "end_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_bookings_on_listing_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "listing_tags", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_listing_tags_on_listing_id"
+    t.index ["tag_id"], name: "index_listing_tags_on_tag_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "name_of_the_building"
     t.string "address"
@@ -33,7 +53,15 @@ ActiveRecord::Schema.define(version: 2019_01_10_085400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "verify"
+    t.json "images"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_01_10_085400) do
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
     t.string "full_name"
+    t.integer "role", default: 0
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

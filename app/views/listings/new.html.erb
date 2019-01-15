@@ -1,14 +1,15 @@
 
 
 
-<h2> Become a host today! </h2>
+<h2 class="text-center h3 mb-3 font-weight-ligh"t style="margin-top: 5vh"> Become a host today! </h2>
 
 	
-<%= form_with url: listings_path, scope: :listing, method: :post, local: true do |form| %>
+<%= form_with url: listings_path, scope: :listing, local: true do |form| %>
     <%= render partial: '/listings/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+
+
+    
+	</form>
 
 <% end %>
