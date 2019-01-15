@@ -20,6 +20,7 @@ ActiveRecord::Base.transaction do
   20.times do 
     user['full_name'] = Faker::Name.name 
     user['email'] = Faker::Internet.unique.email
+    user['avatar'] = Faker::File.file_name('path/to')
     
     User.create(user)
   end

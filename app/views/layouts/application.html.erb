@@ -7,19 +7,30 @@
 
 </head>
 <body>
-  <div id="header">
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
-  </div>
-
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container mx-2">
+       <div class="d-inline-block">
+         <%= link_to "Home", root_path, :style => "color: white", :class => "mr-5" %>
+         <%= link_to "All listings", listings_path, :style => "color: white", :class => "mr-5"%>
+         <%= link_to "Make a listing", new_listing_path, :style => "color: white", :class => "mr-5" %>
+       </div>
+       <div id="header" class = "d-inline-block float-right ">
+          <% if signed_in? -%>
+            <%= button_to t(".sign_out"), sign_out_path, method: :delete , :class => "btn btn-outline-light"%>
+          <% else -%>
+            <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-outline-light" %>
+          <% end -%>
+       </div>
+     </div>
   <div id="flash">
     <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
   </div>
+
+
+  
+</nav>
 
   <%= yield %>
 

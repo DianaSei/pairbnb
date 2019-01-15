@@ -18,6 +18,11 @@
   <%= form.text_field :price, type: 'price' %>
 </div>
 
+<div>
+  <%= form.label :images %>
+  <%= form.file_field :images, :multiple => true %>
+</div>
+
 <div class="submit-field">
       <%= form.submit %>
 </div>

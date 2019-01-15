@@ -30,6 +30,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@listing = Listing.find(params[:id])
+		# @images = @listing.images
 	end
 
 	def edit 
@@ -70,7 +71,8 @@ private
 		  :name_of_the_building, 
 		  :address,  
 		  :details,
-		  :price 
+		  :price, 
+		  {images: []}
 		)	
   	end
 

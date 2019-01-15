@@ -1,5 +1,14 @@
-<h1 class="text-center h3 mb-3 font-weight-light"> Welcome to a simple clon of Airbnb! </h1>
-<p class="text-center h6 mb-3 font-weight-light"> What do you want to book today, <%=@name%>? </p>
+
+<div class="container text-center" style="margin-top: 5vh">
+	<div class=" d-inline-block">	
+		<h1 class="text-center h3 mb-3 font-weight-light"> Welcome to a simple clon of Airbnb! </h1>
+		<p class="text-center h6 mb-3 font-weight-light "> What do you want to book today, <%=@name%>?</p>
+	</div>
+	<%=image_tag current_user.avatar.thumb.url, :class => "d-inline-block float-right", :style => "border-radius: 50px 50px" %>
+
+</div>
+
+	
 
 <nav class="nav">
 	<% if signed_in? %>

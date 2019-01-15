@@ -36,11 +36,17 @@ gem 'bootstrap-sass'
 # Figaro protecting secret keys gem
 gem "figaro"
 
-#faker gem
+# Faker gem to seed the database with random integers and phrase
 gem 'faker'
 
-# Pagination
+# Pagination to put the pages on the page list
 gem 'kaminari'
+
+# Gem to upload the images
+gem 'carrierwave', '~> 1.0'
+
+#Mini magik to reformat images
+gem "mini_magick"
 
 # OmniAuth Google OAuth2 gem
 gem "omniauth"
