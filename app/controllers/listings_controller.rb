@@ -7,11 +7,11 @@ class ListingsController < ApplicationController
 		listing.user_id = current_user.id
 		# tags = Tag.all
 		# tags.each do |tag|
-
+		
 		if listing.save 
 			redirect_to listings_path
 		else 
-			redirect_to root_path
+			redirect_to root_path, notice: "Your listing was not saved!"
 		end
 	end
 
@@ -30,6 +30,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@listing = Listing.find(params[:id])
+		@bookings = Booking.find_by(:user_id => current_user.id)
 		# @images = @listing.images
 	end
 

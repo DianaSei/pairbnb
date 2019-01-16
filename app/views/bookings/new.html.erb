@@ -1,0 +1,13 @@
+<div class="card-body">
+    <h5 class="card-title"><%= @listing.name_of_the_building %><br/></h5>
+    <p class="card-text"><%= @listing.details %> </p>
+    <p class="card-text"><%= @listing.address%></p>
+    <p class="card-text"> Price: <%= @listing.price %></p>
+    <p class="card-text"><small class="text-muted">Last updated <%=@listing.updated_at%></small></p>
+</div>
+
+<%= form_with url: listing_bookings_path(@listing.id), scope: :booking, local: true do |form| %>
+	<%= render partial: '/bookings/form', object: form %>
+	</form>
+<% end %>
+

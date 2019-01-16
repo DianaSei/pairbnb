@@ -1,0 +1,19 @@
+<h1 class="text-center h3 mb-3 font-weight-light" style="margin-top: 5vh"> Here are all your bookings: </h1>
+
+<% @bookings.each do |booking| %>
+<ul>
+   <li>
+	<div class="card-body">
+	    <h5 class="card-title"><%= booking.listing.name_of_the_building %><br/></h5>
+	    <p class="card-text"><%= booking.listing.details %> </p>
+	    <p class="card-text"><%= booking.listing.address%></p>
+	    <p class="card-text"> Price: <%= booking.listing.price %></p>
+	    <p class="card-text"><small class="text-muted">Last updated <%=booking.listing.updated_at%></small></p>
+	     <p class="card-text"> Start from: <%= booking.start_from %></p>
+	     <p class="card-text"> End on: <%= booking.end_on %></p>
+
+	     <div class="btn btn-primary"> <%= link_to "More details", listing_path(booking.listing.id), :class => "text-white" %> </div>
+	  </div>
+	</li>
+</ul>
+<%end %>
