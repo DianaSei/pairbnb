@@ -9,8 +9,11 @@ class BookingsController < ApplicationController
 		booking.user_id = current_user.id
 		booking.listing_id = @listing.id
 		if booking.save
-			redirect_to listings_path, notice: "You have made a booking "
-		else redirect_to new_listing_booking_path, notice: "Your booking was not saved, try to change the dates "
+			ReservationMailer.booking_email(booking.listing.user, booking.user, @listing.id).deliver_now
+			redirect_to listings_path
+			flash[:success] = "You have made a booking "
+		else redirect_to new_listing_booking_path
+			flash[:warning] = "Your booking was not saved, try to change the dates "
 		end
 	end
 
