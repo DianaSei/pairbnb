@@ -53,6 +53,9 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 
 
+#Braintree gem to make payments 
+gem 'braintree'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

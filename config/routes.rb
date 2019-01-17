@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
   root 'welcome#index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -6,11 +7,16 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
+
+
   resources :users do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-    # resources :listings
+  end
+
+  resources :users do
+    resources :bookings, only: [:index, :show]
   end
 
 
@@ -23,5 +29,6 @@ Rails.application.routes.draw do
 
   # A URL that redirects user from google to your app
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  post 'braintree/checkout'
 
 end

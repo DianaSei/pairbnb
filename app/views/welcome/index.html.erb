@@ -15,6 +15,7 @@
 	<%= link_to "Make a listing", new_listing_path, :class => "nav-link active"%> <br/>
 	<% end %>
 	<%= link_to "All listings", listings_path, :class => "nav-link active"%>
+	 <%= link_to "My bookings", user_bookings_path(current_user.id), :style => "color: white", :class => "mr-5" %>
 </nav>
 
 <!-- <nav class="nav">
