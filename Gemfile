@@ -56,6 +56,12 @@ gem "omniauth-google-oauth2"
 #Braintree gem to make payments 
 gem 'braintree'
 
+# Gem to preview the test emails without sending it
+gem "letter_opener", :group => :development
+
+# Gem to fast the mailer work process 
+gem 'sidekiq'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
