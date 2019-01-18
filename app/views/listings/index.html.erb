@@ -1,3 +1,4 @@
+
 <h1 class="text-center h3 mb-3 font-weight-light" style="margin-top: 5vh"> Here are all your options </h1>
 
 
@@ -36,40 +37,27 @@
   <button class="btn btn-outline-success">Search</button>
 </div> <br/>
 
-
+<div class="card-columns text-center">
 <% @listings.each do |listing| %>
+    
+      <div class="card text-center w-75 p-3 justify-content-lg-around mx-auto ">
+        <div class="card-header">
+          <%= listing.created_at %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.name_of_the_building %></h5>
+          <p class="card-text"><%= listing.details %> </p>
+          <div class="btn btn-primary"> <%= link_to "More details", listing_path(listing.id), :class => "text-white" %> 
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Published by: <%=listing.user.full_name %>
+        </div>
+      </div> <br/>
+  
+  
+    <%end %>
+</div> 
+<br/>
 
-<div class="container justify-content-center">
-  <div class="card text-center w-50 p-3 justify-content-center mx-auto ">
-    <div class="card-header">
-      <%= listing.created_at %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"><%= listing.name_of_the_building %></h5>
-      <p class="card-text"><%= listing.details %> </p>
-      <div class="btn btn-primary"> <%= link_to "More details", listing_path(listing.id), :class => "text-white" %> </div>
-    </div>
-    <div class="card-footer text-muted">
-      Published by: <%=listing.user.full_name %>
-    </div>
-  </div>
-</div> <br/>
-<%end %>
-
-
-<!-- <div class="d-flex justify-content-lg-around">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="https://r6jhc3p6j693p1srcsy4fmcd-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/snow_bed_view1-1024x576.jpg">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text">  </p>
-      
-    </div>
-  </div>
-</div> -->
-
-
-
-
- 
      <%= paginate @listings %>

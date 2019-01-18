@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
 		booking.user_id = current_user.id
 		booking.listing_id = @listing.id
 		if booking.save
-			ReservationMailer.booking_email(booking.listing.user, booking.user, @listing.id).deliver_now
+			ReservationJob.perform_later(booking.listing.user, booking.user)
 			redirect_to listings_path
 			flash[:success] = "You have made a booking "
 		else redirect_to new_listing_booking_path
@@ -28,9 +28,11 @@ class BookingsController < ApplicationController
 		redirect_to listing_bookings_path
 	end
 
+
+
 	# the calendar should show the dates only from the current datetime
 	# the calendar should show the dates that are already booked
-	# dont overlap any nearest bookings 
+	
 
 	private
 

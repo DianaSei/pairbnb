@@ -22,28 +22,26 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="container mx-2">
+  <nav>
+    <a href="<%= root_path%>"><img src="https://images-na.ssl-images-amazon.com/images/I/61aCk709t8L._SY500_.jpg" class="d-inline-block float-left" style="width: 8%" /> </a>
+    <div class="navbar container justify-content-end">
        <div class="d-inline-block">
-         <%= link_to "Home", root_path, :style => "color: white", :class => "mr-5" %>
-         <%= link_to "All listings", listings_path, :style => "color: white", :class => "mr-5"%>
+         <%= link_to "Home", root_path, :class => "mr-5 text-dark" %>
+         <%= link_to "All listings", listings_path, :class => "mr-5 text-dark"%>
          <% if signed_in? %>
-         <%= link_to "Make a listing", new_listing_path, :style => "color: white", :class => "mr-5" %>
-         <%= link_to "My bookings", user_bookings_path(current_user.id), :style => "color: white", :class => "mr-5" %>
+         <%= link_to "Make a listing", new_listing_path, :class => "mr-5 text-dark" %>
+         <%= link_to "My bookings", user_bookings_path(current_user.id), :class => "mr-5 text-dark" %>
          <% end %>
        </div>
-       <div id="header" class = "d-inline-block float-right ">
-          <% if signed_in? -%>
-            <%= button_to t(".sign_out"), sign_out_path, method: :delete , :class => "btn btn-outline-light"%>
-          <% else -%>
+       <div id="header" class = "d-inline-block">
+          <% if signed_in? %>
+            <%= button_to t(".sign_out"), sign_out_path, method: :delete , :class => "btn btn-outline-info"%>
+          <% else %>
             <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-outline-light" %>
-          <% end -%>
+          <% end %>
        </div>
-     </div>
-
-
-  
-</nav>
+    </div>
+  </nav>
 
  <% flash.each do |key, value| %>
           <div class=" alert alert-<%=key%>">
