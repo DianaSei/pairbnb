@@ -45,6 +45,9 @@ gem 'kaminari'
 # Gem to upload the images
 gem 'carrierwave', '~> 1.0'
 
+# Gem to save all the listing images in S3 AWS
+gem "fog-aws"
+
 #Mini magik to reformat images
 gem "mini_magick"
 

@@ -19,7 +19,7 @@
 // var tags = []
 
 // $('.submit-field').click(function(event){
-	
+		
 // 		if ($(".checkbox").selected){
 // 		 tags.push()
 // 			}

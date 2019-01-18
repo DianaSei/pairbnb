@@ -38,6 +38,7 @@
 </div> <br/>
 
 <div class="card-columns text-center">
+  <% if @listings != nil %>
 <% @listings.each do |listing| %>
     
       <div class="card text-center w-75 p-3 justify-content-lg-around mx-auto ">
@@ -57,7 +58,10 @@
   
   
     <%end %>
+    <% end %>
 </div> 
 <br/>
-
+  
+  <% if @listings != nil %>
      <%= paginate @listings %>
+     <% end %>

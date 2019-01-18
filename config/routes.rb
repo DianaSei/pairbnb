@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :show]
   end
 
+  
+
 
   post "/listings/:id/verify" => "listings#verify", as: "verify"
   post "/listings/:id/unverify" => "listings#unverify", as: "unverify"

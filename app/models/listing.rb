@@ -5,4 +5,6 @@ class Listing < ApplicationRecord
 	has_many :bookings
 	has_many :listings_tags
     has_many :tags, through: :listings_tags
+
+    scope :city, -> (city) { where("city ILIKE ?", "%#{city}%") }
 end

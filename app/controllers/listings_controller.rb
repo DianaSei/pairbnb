@@ -16,8 +16,9 @@ class ListingsController < ApplicationController
 	end
 
 	def index
-		@listings = Listing.all.order(updated_at: :desc).page params[:page]
+		# @listings = Listing.all.order(updated_at: :desc).page params[:page]
 		# @listings = Listing.all.order(:name_of_the_building).page params[:page]
+		@listings = Listing.city(params[:city]).page params[:page] if params[:city].present?
 		
 
 	end
@@ -72,6 +73,7 @@ private
 		  :address,  
 		  :details,
 		  :price, 
+		  :city,
 		  {images: []}
 		)	
   	end
