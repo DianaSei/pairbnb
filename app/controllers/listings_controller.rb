@@ -30,8 +30,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@listing = Listing.find(params[:id])
-		@bookings = Booking.find_by(:user_id => current_user.id)
-		# @images = @listing.images
+		@booking = Booking.find_by(:listing_id => @listing.id, :user_id => current_user.id)
 	end
 
 	def edit 
