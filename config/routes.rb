@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :show]
   end
 
+  
+
 
   post "/listings/:id/verify" => "listings#verify", as: "verify"
   post "/listings/:id/unverify" => "listings#unverify", as: "unverify"
@@ -30,5 +32,7 @@ Rails.application.routes.draw do
   # A URL that redirects user from google to your app
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   post 'braintree/checkout'
+
+  post "search", to: "welcome#search"
 
 end

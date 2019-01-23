@@ -16,11 +16,17 @@ class ListingsController < ApplicationController
 	end
 
 	def index
-		@listings = Listing.all.order(updated_at: :desc).page params[:page]
+		# @listings = Listing.all.order(updated_at: :desc).page params[:page]
 		# @listings = Listing.all.order(:name_of_the_building).page params[:page]
-		
+		@listings = Listing.city(params[:city]).page params[:page] if params[:city].present?
+		# @listings = @listings.where(smoking: false) if params[:smoking].present?
+		# @listings = @listings.where(pets: true)
 
 	end
+
+	# def search_listings 
+	# 	@listings = Listing.city(params[:city]).page params[:page] if params[:city].present?
+	# end
 
 	def update
 		list = Listing.find(params[:id])
@@ -72,6 +78,7 @@ private
 		  :address,  
 		  :details,
 		  :price, 
+		  :city,
 		  {images: []}
 		)	
   	end

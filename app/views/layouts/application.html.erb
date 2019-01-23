@@ -14,30 +14,49 @@
 
     <!-- Load the Hosted Fields component. -->
     <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <%= stylesheet_link_tag 'application' %> 
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tag %>
 
+    <script> 
+      $( function(){
+        let tags = ["Sinagapore", "Kuala-Lumpur", "Penang"];
+        $("#query").autocomplete({
+          source: tags
+        });
+      });
+    </script>
 
 </head>
 <body>
-  <nav>
-    <a href="<%= root_path%>"><img src="https://images-na.ssl-images-amazon.com/images/I/61aCk709t8L._SY500_.jpg" class="d-inline-block float-left" style="width: 8%" /> </a>
-    <div class="navbar container justify-content-end">
+  <nav class="navbar container-fluid ">
+    <div class="justify-content-start">
+      <a href="<%= root_path%>"><img src="https://images-na.ssl-images-amazon.com/images/I/61aCk709t8L._SY500_.jpg" class="d-inline-block" style="width: 8%" /></a>
+      <%= form_with url: listings_path, method: :get, local: true, :class => "form-inline my-2 my-lg-0 d-inline-block" do |form| %> 
+        <%=form.text_field :city, class: "form-control mr-sm-2", :id => "query", placeholder: "City" %>
+        <%= form.submit "Search", :class => "btn btn-outline-success my-2 my-sm-0"%>
+      <% end%>
+      
+    </div>
+    <div class="container justify-content-end ">
        <div class="d-inline-block">
          <%= link_to "Home", root_path, :class => "mr-5 text-dark" %>
-         <%= link_to "All listings", listings_path, :class => "mr-5 text-dark"%>
-         <% if signed_in? %>
+        <% if signed_in? && current_user.admin?%>
+            <%= link_to "Set roles", new_listing_path, :class => "mr-5 text-dark"%>
+         <% elsif signed_in? %>
          <%= link_to "Make a listing", new_listing_path, :class => "mr-5 text-dark" %>
          <%= link_to "My bookings", user_bookings_path(current_user.id), :class => "mr-5 text-dark" %>
+
          <% end %>
        </div>
        <div id="header" class = "d-inline-block">
           <% if signed_in? %>
             <%= button_to t(".sign_out"), sign_out_path, method: :delete , :class => "btn btn-outline-info"%>
           <% else %>
-            <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-outline-light" %>
+            <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-outline-info" %>
           <% end %>
        </div>
     </div>

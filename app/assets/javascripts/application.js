@@ -19,7 +19,7 @@
 // var tags = []
 
 // $('.submit-field').click(function(event){
-	
+		
 // 		if ($(".checkbox").selected){
 // 		 tags.push()
 // 			}
@@ -34,3 +34,45 @@
 	
 
 // });
+
+// $(document).on('turbolinks:load', function(){
+// 	$(".city-search").on("submit", function(event){
+// 		alert("hi")
+// 		event.preventDefault();
+
+// 	  	var go_to = event.target.id
+// 	  	document.location.href = go_to;
+// 	});
+
+
+
+// 	$("#city-search").on("keyup", function(){
+// 	  autocomplete()
+// 	});
+
+// 	function autocomplete(){
+// 	  $.ajax({
+// 	    url: '/search',
+// 	    type: 'POST',
+// 	    data: $("#city-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
+// 	    dataType: 'json', //specify what type of data you're expecting back from the servers
+// 	    error: function() {
+// 	        console.log("Something went wrong");
+// 	    },
+// 	    success: function(data) {
+// 	      $("#list").html("");
+
+// 	      data.forEach(function(element) {
+// 	        var option = document.createElement("option");
+// 	        option.value = element;
+
+// 	        //append option to list
+// 	        $("#list").append(option);
+// 	     });
+// 	    }
+// 	  });
+// 	}
+	
+// })
+
+

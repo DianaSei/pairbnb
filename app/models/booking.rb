@@ -6,12 +6,13 @@ class Booking < ApplicationRecord
 
 	validate :check_overlapping_dates, on: :create
   	# without S for custom validation
-  	# validate :start_date, on: :create
+  	validate :start_date, on: :create
 
-  	# def start_date (self)
-  	# 	self.start_from > Date.today
-  	# 	self.errors.add(:overlapping_dates, 'The start date should be greater than today date')
-  	# end
+  	def start_date
+  		self.start_from > Date.today
+  		self.errors.add(:overlapping_dates, 'The start date should be greater than today date')
+  		# flash[:warning] = "Your booking was not saved, the starting date should be greater than today date"
+  	end
 
 
 	  def check_overlapping_dates

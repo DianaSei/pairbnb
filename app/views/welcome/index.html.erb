@@ -3,25 +3,38 @@
 
 	<div class=" d-inline-block">	
 		<h1 class="text-center h3 mb-3 font-weight-light"> Welcome to a simple clon of Airbnb! </h1>
-		<p class="text-center h6 mb-3 font-weight-light "> What do you want to book today, <%=@name%>?</p>
+    <% if signed_in? %>
+    <p class="text-center h6 mb-3 font-weight-light "> <%=current_user.full_name%>, your level is <b> <%=current_user.role%></b>! </p>
+		<p class="text-center h6 mb-3 font-weight-light "> What do you want to do today?</p>
 	</div>
 	<%=image_tag current_user.avatar.thumb.url, :class => "d-inline-block float-right", :style => "border-radius: 50px 50px" %>
+<% end %>
+</div> <br/>
 
-</div>
 
-	
+<div class="card-columns text-center">
+ 
+<% @listings.each do |listing| %>
+    
+      <div class="card text-center w-75 p-3 justify-content-lg-around mx-auto ">
+        <div class="card-header">
+          <%= listing.created_at %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.name_of_the_building %></h5>
+          <p class="card-text"><%= listing.details %> </p>
+          <div class="btn btn-primary"> <%= link_to "More details", listing_path(listing.id), :class => "text-white" %> 
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Published by: <%=listing.user.full_name %>
+        </div>
+      </div> <br/>
+  
+ 
+    <% end %>
+</div> 
+<br/>
 
-<nav class="nav">
-	<% if signed_in? %>
-	<%= link_to "Make a listing", new_listing_path, :class => "nav-link active"%> <br/>
-	<% end %>
-	<%= link_to "All listings", listings_path, :class => "nav-link active"%>
-	 <%= link_to "My bookings", user_bookings_path(current_user.id), :style => "color: white", :class => "mr-5" %>
-</nav>
-
-<!-- <nav class="nav">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
-</nav> -->
+     <%= paginate @listings %>
+    

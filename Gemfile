@@ -45,6 +45,9 @@ gem 'kaminari'
 # Gem to upload the images
 gem 'carrierwave', '~> 1.0'
 
+# Gem to save all the listing images in S3 AWS
+gem "fog-aws"
+
 #Mini magik to reformat images
 gem "mini_magick"
 
@@ -61,6 +64,9 @@ gem "letter_opener", :group => :development
 
 # Gem to fast the mailer work process 
 gem 'sidekiq'
+
+# Heroku gem
+gem 'rails_12factor', group: :production
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
