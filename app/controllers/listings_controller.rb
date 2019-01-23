@@ -24,9 +24,7 @@ class ListingsController < ApplicationController
 
 	end
 
-	# def search_listings 
-	# 	@listings = Listing.city(params[:city]).page params[:page] if params[:city].present?
-	# end
+	
 
 	def update
 		list = Listing.find(params[:id])
