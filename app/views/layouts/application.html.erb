@@ -14,11 +14,21 @@
 
     <!-- Load the Hosted Fields component. -->
     <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <%= stylesheet_link_tag 'application' %> 
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tag %>
 
+    <script> 
+      $( function(){
+        let tags = ["Sinagapore", "Kuala-Lumpur", "Penang"];
+        $("#query").autocomplete({
+          source: tags
+        });
+      });
+    </script>
 
 </head>
 <body>
@@ -26,9 +36,10 @@
     <div class="justify-content-start">
       <a href="<%= root_path%>"><img src="https://images-na.ssl-images-amazon.com/images/I/61aCk709t8L._SY500_.jpg" class="d-inline-block" style="width: 8%" /></a>
       <%= form_with url: listings_path, method: :get, local: true, :class => "form-inline my-2 my-lg-0 d-inline-block" do |form| %> 
-        <%=form.text_field :city, class: "form-control mr-sm-2", placeholder: "City" %>
+        <%=form.text_field :city, class: "form-control mr-sm-2", :id => "query", placeholder: "City" %>
         <%= form.submit "Search", :class => "btn btn-outline-success my-2 my-sm-0"%>
       <% end%>
+      
     </div>
     <div class="container justify-content-end ">
        <div class="d-inline-block">
