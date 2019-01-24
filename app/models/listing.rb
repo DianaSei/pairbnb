@@ -8,12 +8,4 @@ class Listing < ApplicationRecord
 
     scope :city, -> (city) { where("city ILIKE ?", "%#{city}%") }
 
- #    def self.search_city(query)
-	#     cities = where("city ILIKE ?", "%#{query}%").map do |record|
-	#       record.city 
-	#     end
-	#     cities.uniq
-	# end
-
-
 end

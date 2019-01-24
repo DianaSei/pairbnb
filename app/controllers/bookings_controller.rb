@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
 		booking.listing_id = @listing.id
 		if booking.save
 			ReservationJob.perform_later(booking.listing.user, booking.user)
-			redirect_to listings_path
+			redirect_to root_path
 			flash[:success] = "You have made a booking "
 		else redirect_to new_listing_booking_path
 			flash[:warning] = "Your booking was not saved, try to change the dates "
@@ -27,12 +27,6 @@ class BookingsController < ApplicationController
 		@booking.destroy 
 		redirect_to listing_bookings_path
 	end
-
-
-
-	# the calendar should show the dates only from the current datetime
-	# the calendar should show the dates that are already booked
-	
 
 	private
 

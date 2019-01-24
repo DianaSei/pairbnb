@@ -18,25 +18,5 @@
 //= require_tree .
 
 
-// var tags = []
-
-// $('.submit-field').click(function(event){
-		
-// 		if ($(".checkbox").selected){
-// 		 tags.push()
-// 			}
-// 	)};
-
-// $('.accept-btn').click(function(event){
-// 	event.preventDefault();
-// 	var listingId = event.target.value
-// 	<% listing.find_by(${listingId}) %>
-	
-// 	// console.log(followingId)
-	
-
-// });
-
-
 
 

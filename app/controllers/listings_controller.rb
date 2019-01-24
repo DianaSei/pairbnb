@@ -5,13 +5,13 @@ class ListingsController < ApplicationController
 	def create
 		listing = Listing.new(listing_params) 
 		listing.user_id = current_user.id
-		# tags = Tag.all
-		# tags.each do |tag|
 		
 		if listing.save 
-			redirect_to listings_path
+			redirect_to root_path
+			flash[:success] = "You have made a listing! "
 		else 
-			redirect_to root_path, notice: "Your listing was not saved!"
+			redirect_to root_path
+			flash[:warning] = "Your listing was not saved, try again! "
 		end
 	end
 

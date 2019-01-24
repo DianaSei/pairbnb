@@ -33,10 +33,12 @@
   <nav class="navbar container-fluid ">
     <div class="justify-content-start">
       <a href="<%= root_path%>"><img src="https://images-na.ssl-images-amazon.com/images/I/61aCk709t8L._SY500_.jpg" class="d-inline-block" style="width: 8%" /></a>
+
       <%= form_with url: listings_path, method: :get, local: true, :class => "form-inline my-2 my-lg-0 d-inline-block" do |form| %> 
         <%=form.text_field :city, class: "form-control mr-sm-2", placeholder: "City" %>
         <%= form.submit "Search", :class => "btn btn-outline-success my-2 my-sm-0"%>
-      <% end%>      
+      <% end%>    
+
     </div>
     
     <div class="container justify-content-end ">
@@ -47,9 +49,9 @@
          <% elsif signed_in? %>
          <%= link_to "Make a listing", new_listing_path, :class => "mr-5 text-dark" %>
          <%= link_to "My bookings", user_bookings_path(current_user.id), :class => "mr-5 text-dark" %>
-
          <% end %>
        </div>
+
        <div id="header" class = "d-inline-block">
           <% if signed_in? %>
             <%= button_to t(".sign_out"), sign_out_path, method: :delete , :class => "btn btn-outline-info"%>
@@ -61,26 +63,24 @@
   </nav>
 
  <% flash.each do |key, value| %>
-          <div class=" alert alert-<%=key%>">
-                <%= value %>
-          </div>
-    <% end %>
+    <div class=" alert alert-<%=key%>">
+       <%= value %>
+    </div>
+ <% end %>
 
   <%= yield %>
 
 
   <script> 
-    // (function(){
       var city_auto = [];
       <% Listing.select(:city).distinct.each do |listing| %>
         city_auto.push("<%= listing.city %>");
       <% end %>
 
-
       $("#city").autocomplete({
         source: city_auto
       });
-    // })();
+
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
