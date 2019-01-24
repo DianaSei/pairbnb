@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'braintree/new'
   root 'welcome#index'
+  get 'braintree/new'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
   resources :listings do
